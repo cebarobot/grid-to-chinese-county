@@ -1,7 +1,4 @@
-import type { LocatorErrorCode } from '../domain/errors.js';
-
 interface BaseLocatorStepDefinition {
-  errorCode: LocatorErrorCode;
   divisor: number;
 }
 
@@ -19,19 +16,17 @@ export type LocatorStepDefinition = BaseLocatorStepDefinition &
   (LetterLocatorStepDefinition | DigitLocatorStepDefinition);
 
 export function getLocatorStepDefinition(pairIndex: number): LocatorStepDefinition {
-  if (pairIndex % 2 === 0) {
-    if (pairIndex === 0) {
-      return {
-        errorCode: 'INVALID_FIELD',
-        divisor: 18,
-        symbolKind: 'letter',
-        minLetter: 'A',
-        maxLetter: 'R'
-      };
-    }
-
+  if (pairIndex === 0) {
     return {
-      errorCode: 'INVALID_SUBSQUARE',
+      divisor: 18,
+      symbolKind: 'letter',
+      minLetter: 'A',
+      maxLetter: 'R'
+    };
+  }
+
+  if (pairIndex % 2 === 0) {
+    return {
       divisor: 24,
       symbolKind: 'letter',
       minLetter: 'A',
@@ -39,17 +34,8 @@ export function getLocatorStepDefinition(pairIndex: number): LocatorStepDefiniti
     };
   }
 
-  if (pairIndex === 1) {
-    return {
-      errorCode: 'INVALID_SQUARE',
-      divisor: 10,
-      symbolKind: 'digit',
-    };
-  }
-
   return {
-    errorCode: 'INVALID_EXTENDED',
     divisor: 10,
-    symbolKind: 'digit',
+    symbolKind: 'digit'
   };
 }
