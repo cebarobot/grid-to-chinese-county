@@ -8,7 +8,10 @@
     "dist"
   ],
   "dependencies": {
-    "@grid-to-xian/shared-types": "workspace:*"
+    "@grid-to-xian/shared-types": "workspace:*",
+    "@turf/boolean-intersects": "^7.3.5",
+    "@turf/boolean-point-in-polygon": "^7.3.5",
+    "@turf/helpers": "^7.3.5"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

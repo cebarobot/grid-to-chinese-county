@@ -1,0 +1,43 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alpha County",
+        "gb": "156000001"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-74.5, 41.0],
+            [-72.7, 41.0],
+            [-72.7, 42.5],
+            [-74.5, 42.5],
+            [-74.5, 41.0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Beta County",
+        "gb": "156000002"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-72.75, 41.5],
+            [-72.5, 41.5],
+            [-72.5, 42.0],
+            [-72.75, 42.0],
+            [-72.75, 41.5]
+          ]
+        ]
+      }
+    }
+  ]
+}
