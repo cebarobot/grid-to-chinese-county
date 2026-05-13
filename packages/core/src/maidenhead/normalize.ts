@@ -1,16 +1,5 @@
 import { LOCATOR_ERROR_CODES, LocatorParseError } from '../domain/errors.js';
-
-function isLetterPair(pairIndex: number): boolean {
-  if (pairIndex === 0) {
-    return true;
-  }
-
-  if (pairIndex === 1) {
-    return false;
-  }
-
-  return pairIndex % 2 === 0;
-}
+import { getLocatorStepDefinition } from './steps.js';
 
 export function normalizeLocator(input: string): string {
   const trimmed = input.trim();
@@ -31,8 +20,9 @@ export function normalizeLocator(input: string): string {
 
   for (let pairIndex = 0; pairIndex < pairCount; pairIndex += 1) {
     const pair = trimmed.slice(pairIndex * 2, pairIndex * 2 + 2);
+    const step = getLocatorStepDefinition(pairIndex);
 
-    normalized += isLetterPair(pairIndex) ? pair.toUpperCase() : pair;
+    normalized += step.symbolKind === 'letter' ? pair.toUpperCase() : pair;
   }
 
   return normalized;

@@ -1,55 +1,55 @@
-import type { LocatorPairKind } from '@grid-to-xian/shared-types';
+import type { LocatorErrorCode } from '../domain/errors.js';
 
-export interface LocatorStepDefinition {
-  pairIndex: number;
-  kind: LocatorPairKind;
+interface BaseLocatorStepDefinition {
+  errorCode: LocatorErrorCode;
   divisor: number;
-  lonBaseSpan: number;
-  latBaseSpan: number;
-  minCharCode?: number;
-  maxCharCode?: number;
 }
 
+interface LetterLocatorStepDefinition {
+  symbolKind: 'letter';
+  minLetter: string;
+  maxLetter: string;
+}
+
+interface DigitLocatorStepDefinition {
+  symbolKind: 'digit';
+}
+
+export type LocatorStepDefinition = BaseLocatorStepDefinition &
+  (LetterLocatorStepDefinition | DigitLocatorStepDefinition);
+
 export function getLocatorStepDefinition(pairIndex: number): LocatorStepDefinition {
-  if (pairIndex === 0) {
+  if (pairIndex % 2 === 0) {
+    if (pairIndex === 0) {
+      return {
+        errorCode: 'INVALID_FIELD',
+        divisor: 18,
+        symbolKind: 'letter',
+        minLetter: 'A',
+        maxLetter: 'R'
+      };
+    }
+
     return {
-      pairIndex,
-      kind: 'field',
-      divisor: 18,
-      lonBaseSpan: 20,
-      latBaseSpan: 10,
-      minCharCode: 65,
-      maxCharCode: 82
+      errorCode: 'INVALID_SUBSQUARE',
+      divisor: 24,
+      symbolKind: 'letter',
+      minLetter: 'A',
+      maxLetter: 'X'
     };
   }
 
   if (pairIndex === 1) {
     return {
-      pairIndex,
-      kind: 'square',
+      errorCode: 'INVALID_SQUARE',
       divisor: 10,
-      lonBaseSpan: 2,
-      latBaseSpan: 1
-    };
-  }
-
-  if (pairIndex % 2 === 0) {
-    return {
-      pairIndex,
-      kind: pairIndex === 2 ? 'subsquare' : 'extended-letter',
-      divisor: 24,
-      lonBaseSpan: 0,
-      latBaseSpan: 0,
-      minCharCode: 65,
-      maxCharCode: 88
+      symbolKind: 'digit',
     };
   }
 
   return {
-    pairIndex,
-    kind: 'extended-digit',
+    errorCode: 'INVALID_EXTENDED',
     divisor: 10,
-    lonBaseSpan: 0,
-    latBaseSpan: 0
+    symbolKind: 'digit',
   };
 }

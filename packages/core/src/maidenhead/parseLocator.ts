@@ -1,12 +1,18 @@
 import type { GeoPoint, GridBounds, ParsedLocator } from '@grid-to-xian/shared-types';
 import { buildGridPolygon } from '../geometry/gridPolygon.js';
-import { LOCATOR_ERROR_CODES, LocatorParseError } from '../domain/errors.js';
+import { LocatorParseError } from '../domain/errors.js';
 import { normalizeLocator } from './normalize.js';
+import type { LocatorStepDefinition } from './steps.js';
 import { getLocatorStepDefinition } from './steps.js';
 
-function assertLetterRange(value: string, minCharCode: number, maxCharCode: number, code: string): number {
+const EARTH_LON_SPAN = 360;
+const EARTH_LAT_SPAN = 180;
+
+function assertLetterRange(value: string, minLetter: string, maxLetter: string, code: string): number {
   const upper = value.toUpperCase();
   const charCode = upper.charCodeAt(0);
+  const minCharCode = minLetter.charCodeAt(0);
+  const maxCharCode = maxLetter.charCodeAt(0);
 
   if (charCode < minCharCode || charCode > maxCharCode) {
     throw new LocatorParseError(code as never, `Invalid locator pair "${value}".`);
@@ -34,79 +40,57 @@ function buildCorners(bounds: GridBounds): GeoPoint[] {
   ];
 }
 
+function getPairIndex(value: string, step: LocatorStepDefinition): number {
+  if (step.symbolKind === 'letter') {
+    return assertLetterRange(value, step.minLetter, step.maxLetter, step.errorCode);
+  }
+
+  return assertDigit(value, step.errorCode);
+}
+
+function getNextSpan(
+  currentLonSpan: number,
+  currentLatSpan: number,
+  step: LocatorStepDefinition
+): { lonSpan: number; latSpan: number } {
+  return {
+    lonSpan: currentLonSpan / step.divisor,
+    latSpan: currentLatSpan / step.divisor
+  };
+}
+
 export function parseLocator(locator: string): ParsedLocator {
   const normalized = normalizeLocator(locator);
   const pairCount = normalized.length / 2;
 
   let minLon = -180;
   let minLat = -90;
-  let lonSpan = 20;
-  let latSpan = 10;
+  let currentLonSpan = EARTH_LON_SPAN;
+  let currentLatSpan = EARTH_LAT_SPAN;
 
   for (let pairIndex = 0; pairIndex < pairCount; pairIndex += 1) {
     const lonChar = normalized.charAt(pairIndex * 2);
     const latChar = normalized.charAt(pairIndex * 2 + 1);
     const step = getLocatorStepDefinition(pairIndex);
+    const nextSpan = getNextSpan(currentLonSpan, currentLatSpan, step);
+    const lonIndex = getPairIndex(lonChar, step);
+    const latIndex = getPairIndex(latChar, step);
 
-    if (pairIndex === 0) {
-      minLon += assertLetterRange(
-        lonChar,
-        step.minCharCode ?? 65,
-        step.maxCharCode ?? 82,
-        LOCATOR_ERROR_CODES.INVALID_FIELD
-      ) * step.lonBaseSpan;
-      minLat += assertLetterRange(
-        latChar,
-        step.minCharCode ?? 65,
-        step.maxCharCode ?? 82,
-        LOCATOR_ERROR_CODES.INVALID_FIELD
-      ) * step.latBaseSpan;
-      lonSpan = step.lonBaseSpan;
-      latSpan = step.latBaseSpan;
-      continue;
-    }
-
-    if (pairIndex === 1) {
-      lonSpan = step.lonBaseSpan;
-      latSpan = step.latBaseSpan;
-      minLon += assertDigit(lonChar, LOCATOR_ERROR_CODES.INVALID_SQUARE) * lonSpan;
-      minLat += assertDigit(latChar, LOCATOR_ERROR_CODES.INVALID_SQUARE) * latSpan;
-      continue;
-    }
-
-    if (step.kind === 'subsquare' || step.kind === 'extended-letter') {
-      lonSpan /= step.divisor;
-      latSpan /= step.divisor;
-      minLon += assertLetterRange(
-        lonChar,
-        step.minCharCode ?? 65,
-        step.maxCharCode ?? 88,
-        LOCATOR_ERROR_CODES.INVALID_SUBSQUARE
-      ) * lonSpan;
-      minLat += assertLetterRange(
-        latChar,
-        step.minCharCode ?? 65,
-        step.maxCharCode ?? 88,
-        LOCATOR_ERROR_CODES.INVALID_SUBSQUARE
-      ) * latSpan;
-      continue;
-    }
-
-    lonSpan /= step.divisor;
-    latSpan /= step.divisor;
-    minLon += assertDigit(lonChar, LOCATOR_ERROR_CODES.INVALID_EXTENDED) * lonSpan;
-    minLat += assertDigit(latChar, LOCATOR_ERROR_CODES.INVALID_EXTENDED) * latSpan;
+    currentLonSpan = nextSpan.lonSpan;
+    currentLatSpan = nextSpan.latSpan;
+    minLon += lonIndex * currentLonSpan;
+    minLat += latIndex * currentLatSpan;
   }
 
   const bounds: GridBounds = {
     minLon,
     minLat,
-    maxLon: minLon + lonSpan,
-    maxLat: minLat + latSpan
+    maxLon: minLon + currentLonSpan,
+    maxLat: minLat + currentLatSpan
   };
   const center: GeoPoint = {
-    lon: minLon + lonSpan / 2,
-    lat: minLat + latSpan / 2
+    lon: minLon + currentLonSpan / 2,
+    lat: minLat + currentLatSpan / 2
   };
 
   return {
@@ -117,8 +101,8 @@ export function parseLocator(locator: string): ParsedLocator {
     corners: buildCorners(bounds),
     polygon: buildGridPolygon(bounds),
     resolution: {
-      lonSpan,
-      latSpan
+      lonSpan: currentLonSpan,
+      latSpan: currentLatSpan
     }
   };
 }

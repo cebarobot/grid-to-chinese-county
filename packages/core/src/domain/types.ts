@@ -3,7 +3,6 @@ export type {
   GridBounds,
   GridPolygon,
   GridResolution,
-  LocatorPairKind,
   LocatorWarning,
   ParsedLocator,
   QueryCandidate,

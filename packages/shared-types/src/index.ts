@@ -44,5 +44,3 @@ export interface QueryResult {
   candidates: QueryCandidate[];
   warnings: LocatorWarning[];
 }
-
-export type LocatorPairKind = 'field' | 'square' | 'subsquare' | 'extended-letter' | 'extended-digit';
