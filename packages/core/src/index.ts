@@ -1,3 +1,4 @@
+export * from './data/countyAssets.js';
 export * from './data/countyIndex.js';
 export * from './data/countyLoader.js';
 export * from './data/countyNormalizer.js';
