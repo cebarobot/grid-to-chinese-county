@@ -93,6 +93,70 @@ curl "http://127.0.0.1:3000/locator?locator=FN3"
 }
 ```
 
+### Web
+
+本地运行前端：
+
+```bash
+pnpm --filter @grid-to-xian/web dev
+```
+
+本地预览构建结果：
+
+```bash
+pnpm --filter @grid-to-xian/web build
+pnpm --filter @grid-to-xian/web preview
+```
+
+前端构建前会自动执行 `pnpm run build:data`，临时生成压缩后的 bbox 资产。
+
+底图配置统一放在 `apps/web/.env.local`，应用本身不区分供应商，只读取通用瓦片参数：
+
+```bash
+VITE_TILE_URLS=https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+VITE_TILE_ATTRIBUTION=&copy; OpenStreetMap contributors
+VITE_TILE_SUBDOMAINS=a,b,c
+VITE_TILE_MAX_ZOOM=19
+```
+
+其中：
+
+1. `VITE_TILE_URLS` 支持单个 URL，也支持用分号或换行分隔的多个 URL。
+2. `VITE_TILE_ATTRIBUTION` 只会显示一次，适合放服务商署名或审图号。
+3. `VITE_TILE_SUBDOMAINS` 可选，逗号分隔。
+4. `VITE_TILE_MAX_ZOOM` 可选。
+
+不同提供商只是在这些通用参数上给不同示例。
+
+OpenStreetMap 示例：
+
+```bash
+VITE_TILE_URLS=https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+VITE_TILE_ATTRIBUTION=&copy; OpenStreetMap contributors
+VITE_TILE_SUBDOMAINS=a,b,c
+VITE_TILE_MAX_ZOOM=19
+```
+
+天地图示例：
+
+```bash
+VITE_TILE_URLS=https://t{s}.tianditu.gov.cn/DataServer?T=vec_w&x={x}&y={y}&l={z}&tk=your-tianditu-token;https://t{s}.tianditu.gov.cn/DataServer?T=cva_w&x={x}&y={y}&l={z}&tk=your-tianditu-token
+VITE_TILE_ATTRIBUTION=天地图 GS（2024）0568号 - 甲测资字1100471
+VITE_TILE_SUBDOMAINS=0,1,2,3,4,5,6,7
+VITE_TILE_MAX_ZOOM=18
+```
+
+### GitHub Pages
+
+部署 workflow 在 [.github/workflows/deploy-pages.yml](.github/workflows/deploy-pages.yml)。
+
+首次启用时需要：
+
+1. 在 GitHub 仓库设置里把 Pages 的 Source 设为 GitHub Actions。
+2. 在仓库 `Secrets` 中配置 `VITE_TILE_URLS`。
+3. 在仓库 `Variables` 中按需配置 `VITE_TILE_ATTRIBUTION`、`VITE_TILE_SUBDOMAINS`、`VITE_TILE_MAX_ZOOM`。
+4. 如果想用默认 OpenStreetMap，可以不配置这些变量；应用会自动回退到 OSM 默认配置。
+
 
 ## Development
 

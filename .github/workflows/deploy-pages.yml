@@ -20,7 +20,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      VITE_TIANDITU_TOKEN: ${{ secrets.VITE_TIANDITU_TOKEN }}
+      VITE_TILE_URLS: ${{ secrets.VITE_TILE_URLS }}
+      VITE_TILE_ATTRIBUTION: ${{ vars.VITE_TILE_ATTRIBUTION }}
+      VITE_TILE_SUBDOMAINS: ${{ vars.VITE_TILE_SUBDOMAINS }}
+      VITE_TILE_MAX_ZOOM: ${{ vars.VITE_TILE_MAX_ZOOM }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,7 +36,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: pnpm
 
       - name: Configure Pages

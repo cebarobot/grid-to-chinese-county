@@ -3,7 +3,7 @@ import 'leaflet/dist/leaflet.css';
 import type { ParsedLocator } from '@grid-to-xian/core/browser';
 import { onBeforeUnmount, type Ref } from 'vue';
 import type { MatchedCountyFeature } from '../services/countyData';
-import { createTiandituLayers } from '../services/tileProvider';
+import { createTileLayers } from '../services/tileProvider';
 
 const DEFAULT_CENTER: L.LatLngExpression = [35.8617, 104.1954];
 const DEFAULT_ZOOM = 4;
@@ -28,7 +28,7 @@ export function useLeafletMap(containerRef: Ref<HTMLElement | null>) {
     map.setView(DEFAULT_CENTER, DEFAULT_ZOOM);
     map.attributionControl.setPrefix('');
 
-    for (const tileLayer of createTiandituLayers()) {
+    for (const tileLayer of createTileLayers()) {
       tileLayer.addTo(map);
     }
 
