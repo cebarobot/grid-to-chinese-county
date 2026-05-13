@@ -47,9 +47,6 @@ importers:
       '@turf/boolean-intersects':
         specifier: ^7.3.5
         version: 7.3.5
-      '@turf/boolean-point-in-polygon':
-        specifier: ^7.3.5
-        version: 7.3.5
       '@turf/helpers':
         specifier: ^7.3.5
         version: 7.3.5

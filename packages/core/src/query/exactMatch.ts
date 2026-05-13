@@ -1,16 +1,8 @@
 import booleanIntersects from '@turf/boolean-intersects';
-import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
-import { point, polygon } from '@turf/helpers';
+import { polygon } from '@turf/helpers';
 import type { ParsedLocator } from '@grid-to-xian/shared-types';
 import type { Feature, GeoJsonProperties, Polygon as GeoJsonPolygon } from 'geojson';
 import type { CountyGeometry, CountyRecord } from '../data/countyNormalizer.js';
-
-export interface CountyMatch extends CountyRecord {
-  centerHit: boolean;
-  cornerHitCount: number;
-  intersects: boolean;
-  boundaryOverlap: boolean;
-}
 
 function createCountyFeature(county: CountyRecord): Feature<CountyGeometry, GeoJsonProperties> {
   return {
@@ -24,30 +16,17 @@ function createGridFeature(parsed: ParsedLocator): Feature<GeoJsonPolygon, GeoJs
   return polygon([parsed.polygon.coordinates]);
 }
 
-export function exactMatchCounties(parsed: ParsedLocator, counties: CountyRecord[]): CountyMatch[] {
+export function exactMatchCounties(parsed: ParsedLocator, counties: CountyRecord[]): CountyRecord[] {
   const gridFeature = createGridFeature(parsed);
-  const centerPoint = point([parsed.center.lon, parsed.center.lat]);
-  const cornerPoints = parsed.corners.map((corner) => point([corner.lon, corner.lat]));
-  const matches: CountyMatch[] = [];
+  const matches: CountyRecord[] = [];
 
   for (const county of counties) {
     const countyFeature = createCountyFeature(county);
-    const centerHit = booleanPointInPolygon(centerPoint, countyFeature);
-    const cornerHitCount = cornerPoints.filter((cornerPoint) => booleanPointInPolygon(cornerPoint, countyFeature)).length;
     const intersects = booleanIntersects(gridFeature, countyFeature);
 
-    if (!centerHit && cornerHitCount === 0 && !intersects) {
-      continue;
+    if (intersects) {
+      matches.push(county);
     }
-
-    matches.push({
-      ...county,
-      centerHit,
-      cornerHitCount,
-      intersects,
-      boundaryOverlap: intersects && (!centerHit || cornerHitCount < cornerPoints.length)
-    });
   }
-
   return matches;
 }

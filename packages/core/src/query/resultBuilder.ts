@@ -1,5 +1,5 @@
 import type { LocatorWarning, ParsedLocator, QueryCandidate, QueryResult } from '@grid-to-xian/shared-types';
-import type { CountyMatch } from './exactMatch.js';
+import type { CountyRecord } from '../data/countyNormalizer.js';
 
 export const QUERY_WARNING_CODES = {
   NO_MATCH: 'NO_MATCH',
@@ -12,7 +12,7 @@ function createWarning(code: string, message: string): LocatorWarning {
   return { code, message };
 }
 
-function buildCandidates(matches: CountyMatch[]): QueryCandidate[] {
+function buildCandidates(matches: CountyRecord[]): QueryCandidate[] {
   const candidatesByGbCode = new Map<string, QueryCandidate>();
 
   for (const match of matches) {
@@ -25,7 +25,7 @@ function buildCandidates(matches: CountyMatch[]): QueryCandidate[] {
   return [...candidatesByGbCode.values()].sort((left, right) => left.gbCode.localeCompare(right.gbCode));
 }
 
-export function buildQueryResult(parsed: ParsedLocator, matches: CountyMatch[]): QueryResult {
+export function buildQueryResult(parsed: ParsedLocator, matches: CountyRecord[]): QueryResult {
   const candidates = buildCandidates(matches);
   const warnings: LocatorWarning[] = [];
 
@@ -56,7 +56,7 @@ export function buildQueryResult(parsed: ParsedLocator, matches: CountyMatch[]):
     );
   }
 
-  if (parsed.precision > 4 && matches.some((match) => match.boundaryOverlap)) {
+  if (parsed.precision > 4 && candidates.length > 1) {
     warnings.push(
       createWarning(
         QUERY_WARNING_CODES.BOUNDARY_OVERLAP,

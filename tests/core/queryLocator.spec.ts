@@ -15,13 +15,15 @@ beforeAll(async () => {
 
 describe('buildCountyIndex', () => {
   it('normalizes county properties and bounding boxes', () => {
+    const alphaCounty = countyIndex.counties[0]!;
+
     expect(countyIndex.counties).toHaveLength(2);
-    expect(countyIndex.counties[0]).toMatchObject({
+    expect(alphaCounty).toMatchObject({
       name: 'Alpha County',
       gbCode: '156000001'
     });
-    expect(countyIndex.counties[0].bbox.minLon).toBeCloseTo(-74.5, 10);
-    expect(countyIndex.counties[0].bbox.maxLat).toBeCloseTo(42.5, 10);
+    expect(alphaCounty.bbox.minLon).toBeCloseTo(-74.5, 10);
+    expect(alphaCounty.bbox.maxLat).toBeCloseTo(42.5, 10);
   });
 });
 

@@ -6,6 +6,9 @@
         "../shared-types/dist/index.d.ts"
       ]
     },
+    "types": [
+      "node"
+    ],
     "rootDir": "src",
     "outDir": "dist"
   },
