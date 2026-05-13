@@ -1,7 +1,18 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "paths": {
+      "@grid-to-xian/core": [
+        "../../packages/core/dist/index.d.ts"
+      ],
+      "@grid-to-xian/shared-types": [
+        "../../packages/shared-types/dist/index.d.ts"
+      ]
+    },
     "rootDir": "src",
+    "types": [
+      "node"
+    ],
     "outDir": "dist"
   },
   "include": [
