@@ -1,0 +1,6 @@
+ai_docs/
+node_modules/
+dist/
+coverage/
+.pnpm-store/
+

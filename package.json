@@ -1,0 +1,22 @@
+{
+  "name": "grid-to-xian",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.18.1",
+  "scripts": {
+    "build": "pnpm -r --if-present run build",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "typecheck": "pnpm -r --if-present run typecheck",
+    "dev": "pnpm --filter @grid-to-xian/web run dev"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.27.0",
+    "@types/node": "^22.15.21",
+    "eslint": "^9.27.0",
+    "globals": "^16.1.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.0",
+    "vitest": "^3.1.3"
+  }
+}
