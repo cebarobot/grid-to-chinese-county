@@ -1,6 +1,5 @@
 export * from './data/countyAssets.js';
 export * from './data/countyIndex.js';
-export * from './data/countyLoader.js';
 export * from './data/countyNormalizer.js';
 export * from './domain/errors.js';
 export * from './domain/result.js';
@@ -12,6 +11,4 @@ export * from './maidenhead/steps.js';
 export * from './query/bboxFilter.js';
 export * from './query/exactMatch.js';
 export * from './query/queryLocator.js';
-export * from './query/queryLocatorFile.js';
 export * from './query/resultBuilder.js';
-

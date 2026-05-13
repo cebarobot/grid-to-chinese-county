@@ -2,14 +2,23 @@
   "name": "@grid-to-xian/web",
   "version": "0.1.0",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "dependencies": {
+    "@grid-to-xian/core": "workspace:*",
+    "leaflet": "^1.9.4",
+    "vue": "^3.5.34"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.21",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "vite": "^8.0.12",
+    "vue-tsc": "^3.2.8"
+  },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "dev": "tsc -p tsconfig.json --watch --preserveWatchOutput"
+    "prebuild": "pnpm --dir ../.. run build:data",
+    "build": "vite build",
+    "predev": "pnpm --dir ../.. run build:data",
+    "dev": "vite",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc -p tsconfig.json --noEmit"
   }
 }

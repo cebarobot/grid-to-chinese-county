@@ -1,0 +1,21 @@
+:root {
+  color-scheme: light;
+  --bg-top: #fbf6eb;
+  --bg-bottom: #d8ebff;
+  --panel: rgba(255, 250, 242, 0.92);
+  --panel-strong: rgba(255, 255, 255, 0.96);
+  --ink: #12263a;
+  --muted: #5f6b7a;
+  --line: rgba(18, 38, 58, 0.12);
+  --accent: #e85d04;
+  --accent-soft: #ffedd5;
+  --teal: #0f766e;
+  --teal-soft: #d9fbf4;
+  --danger: #b91c1c;
+  --warning: #9a3412;
+  --shadow: 0 24px 64px rgba(20, 40, 70, 0.14);
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --font-sans: 'IBM Plex Sans', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}

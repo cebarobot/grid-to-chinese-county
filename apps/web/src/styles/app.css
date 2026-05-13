@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(255, 197, 61, 0.28), transparent 24%),
+    radial-gradient(circle at right center, rgba(45, 212, 191, 0.18), transparent 22%),
+    linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+}
+
+.app-shell {
+  width: min(1320px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 24px 0 40px;
+}
+
+.hero-panel,
+.panel,
+.map-frame {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.hero-panel {
+  padding: 28px;
+  margin-bottom: 20px;
+}
+
+.eyebrow,
+.panel-label {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+
+.hero-panel h1,
+.panel-title {
+  margin: 0;
+  line-height: 1.1;
+}
+
+.hero-panel h1 {
+  font-size: clamp(2.1rem, 4vw, 4rem);
+}
+
+.hero-copy,
+.panel-copy,
+.empty-copy,
+.status-banner p,
+.map-overlay p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.hero-copy {
+  margin-top: 12px;
+  max-width: 720px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.control-column,
+.card-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.panel {
+  padding: 22px;
+}
+
+.locator-input-wrap {
+  display: grid;
+  gap: 10px;
+}
+
+.field-label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.locator-input {
+  width: 100%;
+  padding: 16px 18px;
+  border: 1px solid rgba(18, 38, 58, 0.18);
+  border-radius: var(--radius-md);
+  background: var(--panel-strong);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+}
+
+.locator-input:focus {
+  outline: 2px solid rgba(232, 93, 4, 0.24);
+  outline-offset: 2px;
+}
+
+.primary-button {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, var(--accent), #ff7b00);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.status-banner {
+  padding: 16px 18px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+}
+
+.status-banner strong,
+.map-overlay strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.status-banner[data-kind='info'] {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.status-banner[data-kind='warning'] {
+  background: rgba(255, 237, 213, 0.92);
+  color: var(--warning);
+}
+
+.status-banner[data-kind='error'],
+.result-error {
+  background: rgba(254, 226, 226, 0.92);
+  color: var(--danger);
+}
+
+.candidate-list,
+.warning-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.candidate-card {
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.candidate-card span {
+  color: var(--muted);
+}
+
+.warning-list li {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+  color: var(--warning);
+}
+
+.map-frame {
+  position: sticky;
+  top: 24px;
+  min-height: 680px;
+  overflow: hidden;
+}
+
+.map-canvas {
+  width: 100%;
+  min-height: 680px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(218, 240, 255, 0.84)),
+    repeating-linear-gradient(
+      45deg,
+      rgba(15, 118, 110, 0.05),
+      rgba(15, 118, 110, 0.05) 18px,
+      rgba(255, 255, 255, 0.08) 18px,
+      rgba(255, 255, 255, 0.08) 36px
+    );
+}
+
+.map-overlay {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  max-width: min(440px, calc(100% - 40px));
+  padding: 14px 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(18, 38, 58, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 28px rgba(18, 38, 58, 0.16);
+}
+
+.map-overlay--loading {
+  background: rgba(255, 251, 235, 0.94);
+}
+
+.map-overlay--note {
+  background: rgba(240, 253, 250, 0.94);
+}
+
+@media (max-width: 980px) {
+  .app-shell {
+    width: min(100vw - 20px, 1320px);
+    padding: 16px 0 28px;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .map-frame {
+    position: static;
+    min-height: 520px;
+  }
+
+  .map-canvas {
+    min-height: 520px;
+  }
+}
