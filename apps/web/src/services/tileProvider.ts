@@ -1,6 +1,6 @@
 import L from 'leaflet';
 
-const tileProviderConfig = __GRID_TO_XIAN_TILE_PROVIDER_CONFIG__;
+const tileProviderConfig = __GRID_TO_CHINESE_COUNTY_TILE_PROVIDER_CONFIG__;
 
 export interface TileProviderState {
   layers: L.TileLayer[];

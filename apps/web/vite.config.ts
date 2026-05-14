@@ -72,7 +72,7 @@ export default defineConfig(({ mode }) => {
   return {
     base: process.env.GITHUB_ACTIONS ? `/${repositoryName}/` : '/',
     define: {
-      __GRID_TO_XIAN_TILE_PROVIDER_CONFIG__: JSON.stringify(buildTileProviderConfig(env))
+      __GRID_TO_CHINESE_COUNTY_TILE_PROVIDER_CONFIG__: JSON.stringify(buildTileProviderConfig(env))
     },
     plugins: [vue()],
     resolve: {

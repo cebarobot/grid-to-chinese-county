@@ -38,19 +38,19 @@ importers:
 
   apps/api:
     dependencies:
-      '@grid-to-xian/core':
+      '@grid-to-chinese-county/core':
         specifier: workspace:*
         version: link:../../packages/core
 
   apps/cli:
     dependencies:
-      '@grid-to-xian/core':
+      '@grid-to-chinese-county/core':
         specifier: workspace:*
         version: link:../../packages/core
 
   apps/web:
     dependencies:
-      '@grid-to-xian/core':
+      '@grid-to-chinese-county/core':
         specifier: workspace:*
         version: link:../../packages/core
       leaflet:
@@ -75,7 +75,7 @@ importers:
 
   packages/core:
     dependencies:
-      '@grid-to-xian/shared-types':
+      '@grid-to-chinese-county/shared-types':
         specifier: workspace:*
         version: link:../shared-types
       '@turf/boolean-intersects':

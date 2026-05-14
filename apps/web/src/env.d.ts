@@ -1,14 +1,14 @@
 /// <reference types="vite/client" />
 
-interface GridToXianTileLayerConfig {
+interface GridToChineseCountyTileLayerConfig {
   url: string;
   subdomains?: string | string[];
   attribution?: string;
   maxZoom: number;
 }
 
-interface GridToXianTileProviderConfig {
-  layers: GridToXianTileLayerConfig[];
+interface GridToChineseCountyTileProviderConfig {
+  layers: GridToChineseCountyTileLayerConfig[];
 }
 
-declare const __GRID_TO_XIAN_TILE_PROVIDER_CONFIG__: GridToXianTileProviderConfig;
+declare const __GRID_TO_CHINESE_COUNTY_TILE_PROVIDER_CONFIG__: GridToChineseCountyTileProviderConfig;
