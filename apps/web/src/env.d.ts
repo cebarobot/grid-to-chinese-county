@@ -1,12 +1,14 @@
 /// <reference types="vite/client" />
 
-interface ImportMetaEnv {
-  readonly VITE_TILE_URLS?: string;
-  readonly VITE_TILE_ATTRIBUTION?: string;
-  readonly VITE_TILE_SUBDOMAINS?: string;
-  readonly VITE_TILE_MAX_ZOOM?: string;
+interface GridToXianTileLayerConfig {
+  url: string;
+  subdomains?: string | string[];
+  attribution?: string;
+  maxZoom: number;
 }
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv;
+interface GridToXianTileProviderConfig {
+  layers: GridToXianTileLayerConfig[];
 }
+
+declare const __GRID_TO_XIAN_TILE_PROVIDER_CONFIG__: GridToXianTileProviderConfig;

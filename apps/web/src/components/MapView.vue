@@ -8,7 +8,6 @@ const props = defineProps<{
   parsedLocator: ParsedLocator | null;
   matchedFeatures: MatchedCountyFeature[];
   loadingMessage: string | null;
-  tileWarning: string | null;
 }>();
 
 const mapRoot = ref<HTMLElement | null>(null);
@@ -36,11 +35,6 @@ watch(
     <div v-if="loadingMessage !== null" class="map-overlay map-overlay--loading">
       <strong>正在加载县级 GeoJSON…</strong>
       <p>{{ loadingMessage }}</p>
-    </div>
-
-    <div v-else-if="tileWarning !== null" class="map-overlay map-overlay--note">
-      <strong>底图提醒</strong>
-      <p>{{ tileWarning }}</p>
     </div>
   </section>
 </template>

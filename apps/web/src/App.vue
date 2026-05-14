@@ -5,7 +5,6 @@ import MapView from './components/MapView.vue';
 import ResultPanel from './components/ResultPanel.vue';
 import StatusBanner from './components/StatusBanner.vue';
 import { useLocatorQuery } from './composables/useLocatorQuery';
-import { getTileProviderWarning } from './services/tileProvider';
 
 const {
   locatorInput,
@@ -21,7 +20,6 @@ const {
   resultSummary
 } = useLocatorQuery();
 
-const tileWarning = getTileProviderWarning();
 const isBusy = computed(() => submitStatus.value === 'loading');
 </script>
 
@@ -57,13 +55,6 @@ const isBusy = computed(() => submitStatus.value === 'loading');
           :message="assetMessage"
         />
 
-        <StatusBanner
-          v-if="tileWarning !== null"
-          kind="warning"
-          title="底图提示"
-          :message="tileWarning"
-        />
-
         <ResultPanel
           :result="result"
           :error-message="errorMessage"
@@ -77,7 +68,6 @@ const isBusy = computed(() => submitStatus.value === 'loading');
           :parsed-locator="parsedLocator"
           :matched-features="matchedFeatures"
           :loading-message="assetStatus === 'loading' ? assetMessage : null"
-          :tile-warning="tileWarning"
         />
       </section>
     </main>
