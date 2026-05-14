@@ -1,6 +1,6 @@
 import booleanIntersects from '@turf/boolean-intersects';
 import { polygon } from '@turf/helpers';
-import type { ParsedLocator } from '@grid-to-xian/shared-types';
+import type { ParsedLocator } from '@grid-to-chinese-county/shared-types';
 import type { Feature, GeoJsonProperties, Polygon as GeoJsonPolygon } from 'geojson';
 import type { CountyGeometry, CountyRecord } from '../data/countyNormalizer.js';
 

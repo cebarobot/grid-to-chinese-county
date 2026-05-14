@@ -1,4 +1,4 @@
-import type { QueryResult } from '@grid-to-xian/shared-types';
+import type { QueryResult } from '@grid-to-chinese-county/shared-types';
 import type { CliOutputFormat } from './parseArgs.js';
 
 function formatTextOutput(result: QueryResult): string {
@@ -33,7 +33,7 @@ export function formatCliOutput(result: QueryResult, format: CliOutputFormat): s
 
 export function formatCliHelp(): string {
   return [
-    'Usage: grid-to-xian <locator> [--json] [--source <path>]',
+    'Usage: grid-to-chinese-county <locator> [--json] [--source <path>]',
     '',
     'Options:',
     '  --json            Print the query result as JSON.',

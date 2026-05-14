@@ -6,7 +6,7 @@ import {
   parseLocator,
   type ParsedLocator,
   type QueryResult
-} from '@grid-to-xian/core/browser';
+} from '@grid-to-chinese-county/core/browser';
 import { computed, ref, shallowRef } from 'vue';
 import {
   loadCountyQueryResources,

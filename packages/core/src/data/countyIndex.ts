@@ -1,4 +1,4 @@
-import type { GridBounds } from '@grid-to-xian/shared-types';
+import type { GridBounds } from '@grid-to-chinese-county/shared-types';
 import {
   normalizeCountyFeature,
   type CountyFeatureCollection,

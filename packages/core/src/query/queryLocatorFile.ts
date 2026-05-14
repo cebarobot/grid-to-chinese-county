@@ -1,4 +1,4 @@
-import type { QueryResult } from '@grid-to-xian/shared-types';
+import type { QueryResult } from '@grid-to-chinese-county/shared-types';
 import {
   DEFAULT_CHINA_COUNTY_GEOJSON_URL,
   loadChinaCountyIndex,

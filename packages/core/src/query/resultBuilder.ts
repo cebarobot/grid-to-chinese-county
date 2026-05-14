@@ -1,4 +1,4 @@
-import type { LocatorWarning, ParsedLocator, QueryCandidate, QueryResult } from '@grid-to-xian/shared-types';
+import type { LocatorWarning, ParsedLocator, QueryCandidate, QueryResult } from '@grid-to-chinese-county/shared-types';
 import type { CountyRecord } from '../data/countyNormalizer.js';
 
 export const QUERY_WARNING_CODES = {

@@ -1,5 +1,5 @@
 {
-  "name": "@grid-to-xian/api",
+  "name": "@grid-to-chinese-county/api",
   "version": "0.1.0",
   "type": "module",
   "main": "dist/index.js",
@@ -8,7 +8,7 @@
     "dist"
   ],
   "dependencies": {
-    "@grid-to-xian/core": "workspace:*"
+    "@grid-to-chinese-county/core": "workspace:*"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

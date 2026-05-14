@@ -5,7 +5,7 @@ import type {
   CountyIndexAsset,
   CountyRecord,
   QueryCandidate
-} from '@grid-to-xian/core/browser';
+} from '@grid-to-chinese-county/core/browser';
 import countyGeojsonUrl from '../../../../geojson/中国_县.geojson?url';
 import countyIndexUrl from '../../../../data/county-index.json?url';
 

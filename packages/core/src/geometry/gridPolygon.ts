@@ -1,4 +1,4 @@
-import type { GridBounds, GridPolygon } from '@grid-to-xian/shared-types';
+import type { GridBounds, GridPolygon } from '@grid-to-chinese-county/shared-types';
 
 export function buildGridPolygon(bounds: GridBounds): GridPolygon {
   return {

@@ -26,7 +26,7 @@ const isBusy = computed(() => submitStatus.value === 'loading');
 <template>
   <div class="app-shell">
     <header class="hero-panel">
-      <p class="eyebrow">Maidenhead to County</p>
+      <p class="eyebrow">Grid to Chinese County</p>
       <h1>网格定位到中国县级行政区</h1>
       <p class="hero-copy">
         输入 Maidenhead Locator，前端本地完成查询，并只绘制网格方框与命中的县边界。

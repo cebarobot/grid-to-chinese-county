@@ -1,4 +1,4 @@
-import type { GridBounds } from '@grid-to-xian/shared-types';
+import type { GridBounds } from '@grid-to-chinese-county/shared-types';
 import { boundsIntersect, type CountyIndex } from '../data/countyIndex.js';
 import type { CountyRecord } from '../data/countyNormalizer.js';
 

@@ -1,4 +1,4 @@
-import type { QueryResult } from '@grid-to-xian/shared-types';
+import type { QueryResult } from '@grid-to-chinese-county/shared-types';
 import { buildCountyIndex, type CountyIndex } from '../data/countyIndex.js';
 import type { CountyFeatureCollection } from '../data/countyNormalizer.js';
 import { parseLocator } from '../maidenhead/parseLocator.js';

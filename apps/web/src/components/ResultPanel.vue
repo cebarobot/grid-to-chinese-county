@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { QueryResult } from '@grid-to-xian/shared-types';
+import type { QueryResult } from '@grid-to-chinese-county/shared-types';
 
 defineProps<{
   result: QueryResult | null;

@@ -1,5 +1,5 @@
 {
-  "name": "@grid-to-xian/core",
+  "name": "@grid-to-chinese-county/core",
   "version": "0.1.0",
   "type": "module",
   "main": "dist/index.js",
@@ -8,7 +8,7 @@
     "dist"
   ],
   "dependencies": {
-    "@grid-to-xian/shared-types": "workspace:*",
+    "@grid-to-chinese-county/shared-types": "workspace:*",
     "@turf/boolean-intersects": "^7.3.5",
     "@turf/helpers": "^7.3.5"
   },

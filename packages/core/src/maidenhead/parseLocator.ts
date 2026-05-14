@@ -1,4 +1,4 @@
-import type { GeoPoint, GridBounds, ParsedLocator } from '@grid-to-xian/shared-types';
+import type { GeoPoint, GridBounds, ParsedLocator } from '@grid-to-chinese-county/shared-types';
 import { buildGridPolygon } from '../geometry/gridPolygon.js';
 import { LOCATOR_ERROR_CODES, LocatorParseError } from '../domain/errors.js';
 import { normalizeLocator } from './normalize.js';

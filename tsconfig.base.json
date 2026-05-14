@@ -14,10 +14,10 @@
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
     "paths": {
-      "@grid-to-xian/core": [
+      "@grid-to-chinese-county/core": [
         "./packages/core/src/index.ts"
       ],
-      "@grid-to-xian/shared-types": [
+      "@grid-to-chinese-county/shared-types": [
         "./packages/shared-types/src/index.ts"
       ]
     }

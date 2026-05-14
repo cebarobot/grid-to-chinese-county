@@ -1,5 +1,5 @@
 {
-  "name": "@grid-to-xian/shared-types",
+  "name": "@grid-to-chinese-county/shared-types",
   "version": "0.1.0",
   "type": "module",
   "main": "dist/index.js",

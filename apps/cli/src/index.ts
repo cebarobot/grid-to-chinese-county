@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { LocatorParseError, queryChinaCountyLocator } from '@grid-to-xian/core';
+import { LocatorParseError, queryChinaCountyLocator } from '@grid-to-chinese-county/core';
 import { pathToFileURL } from 'node:url';
 import { formatCliError, formatCliHelp, formatCliOutput } from './output.js';
 import { CliUsageError, parseCliArgs } from './parseArgs.js';

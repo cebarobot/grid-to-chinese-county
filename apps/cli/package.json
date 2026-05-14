@@ -1,9 +1,9 @@
 {
-  "name": "@grid-to-xian/cli",
+  "name": "@grid-to-chinese-county/cli",
   "version": "0.1.0",
   "type": "module",
   "bin": {
-    "grid-to-xian": "dist/index.js"
+    "grid-to-chinese-county": "dist/index.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,7 @@
     "dist"
   ],
   "dependencies": {
-    "@grid-to-xian/core": "workspace:*"
+    "@grid-to-chinese-county/core": "workspace:*"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

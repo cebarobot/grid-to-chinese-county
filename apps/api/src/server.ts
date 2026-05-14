@@ -1,4 +1,4 @@
-import { loadChinaCountyIndex, queryLocator, type CountyIndex } from '@grid-to-xian/core';
+import { loadChinaCountyIndex, queryLocator, type CountyIndex } from '@grid-to-chinese-county/core';
 import { createServer, type Server, type ServerResponse } from 'node:http';
 import { mapErrorToApiError } from './mappers/errors.js';
 import { buildHealthResponse } from './routes/health.js';

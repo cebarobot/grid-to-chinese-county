@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ParsedLocator } from '@grid-to-xian/core/browser';
+import type { ParsedLocator } from '@grid-to-chinese-county/core/browser';
 import { onMounted, ref, watch } from 'vue';
 import { useLeafletMap } from '../composables/useLeafletMap';
 import type { MatchedCountyFeature } from '../services/countyData';

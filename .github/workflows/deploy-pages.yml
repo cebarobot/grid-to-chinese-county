@@ -49,7 +49,7 @@ jobs:
         run: pnpm run build:data
 
       - name: Build web app
-        run: pnpm --filter @grid-to-xian/web build
+        run: pnpm --filter @grid-to-chinese-county/web build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

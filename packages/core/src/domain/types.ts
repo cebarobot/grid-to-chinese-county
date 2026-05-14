@@ -7,4 +7,4 @@ export type {
   ParsedLocator,
   QueryCandidate,
   QueryResult
-} from '@grid-to-xian/shared-types';
+} from '@grid-to-chinese-county/shared-types';

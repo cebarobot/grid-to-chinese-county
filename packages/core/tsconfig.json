@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "paths": {
-      "@grid-to-xian/shared-types": [
+      "@grid-to-chinese-county/shared-types": [
         "../shared-types/dist/index.d.ts"
       ]
     },

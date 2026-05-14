@@ -1,4 +1,4 @@
-import type { GridBounds } from '@grid-to-xian/shared-types';
+import type { GridBounds } from '@grid-to-chinese-county/shared-types';
 import type { Feature, FeatureCollection, MultiPolygon, Polygon, Position } from 'geojson';
 
 export interface CountyFeatureProperties {

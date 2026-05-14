@@ -1,5 +1,5 @@
 {
-  "name": "grid-to-xian",
+  "name": "grid-to-chinese-county",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.18.1",
@@ -9,8 +9,8 @@
     "build:data:index": "tsx scripts/build-county-index.ts",
     "lint": "eslint .",
     "test": "vitest run",
-    "typecheck": "pnpm --filter @grid-to-xian/shared-types build && pnpm --filter @grid-to-xian/core build && pnpm -r --if-present run typecheck",
-    "dev": "pnpm --filter @grid-to-xian/web run dev"
+    "typecheck": "pnpm --filter @grid-to-chinese-county/shared-types build && pnpm --filter @grid-to-chinese-county/core build && pnpm -r --if-present run typecheck",
+    "dev": "pnpm --filter @grid-to-chinese-county/web run dev"
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",

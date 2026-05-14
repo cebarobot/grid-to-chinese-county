@@ -4,7 +4,7 @@ import { defineConfig, loadEnv } from 'vite';
 
 const webRoot = fileURLToPath(new URL('.', import.meta.url));
 
-const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? 'grid-to-xian';
+const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? 'grid-to-chinese-county';
 
 const DEFAULT_TILE_URLS = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const DEFAULT_TILE_SUBDOMAINS = 'abc';
@@ -77,8 +77,8 @@ export default defineConfig(({ mode }) => {
     plugins: [vue()],
     resolve: {
       alias: {
-        '@grid-to-xian/core/browser': fileURLToPath(new URL('../../packages/core/src/browser.ts', import.meta.url)),
-        '@grid-to-xian/shared-types': fileURLToPath(
+        '@grid-to-chinese-county/core/browser': fileURLToPath(new URL('../../packages/core/src/browser.ts', import.meta.url)),
+        '@grid-to-chinese-county/shared-types': fileURLToPath(
           new URL('../../packages/shared-types/src/index.ts', import.meta.url)
         )
       }

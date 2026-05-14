@@ -1,6 +1,6 @@
-# Grid to China division
+# Grid to Chinese County
 
-A simple tool to convert Maidenhead Locator System Grid to China division.
+A simple tool to convert Maidenhead Locator System Grid to Chinese county-level administrative divisions.
 
 ## Usage
 
@@ -98,14 +98,14 @@ curl "http://127.0.0.1:3000/locator?locator=FN3"
 本地运行前端：
 
 ```bash
-pnpm --filter @grid-to-xian/web dev
+pnpm --filter @grid-to-chinese-county/web dev
 ```
 
 本地预览构建结果：
 
 ```bash
-pnpm --filter @grid-to-xian/web build
-pnpm --filter @grid-to-xian/web preview
+pnpm --filter @grid-to-chinese-county/web build
+pnpm --filter @grid-to-chinese-county/web preview
 ```
 
 前端构建前会自动执行 `pnpm run build:data`，临时生成压缩后的 bbox 资产。
@@ -155,6 +155,6 @@ VITE_TILE_MAX_ZOOM="18"
 - `packages/shared-types`: shared public types
 - `apps/cli`: CLI query interface
 - `apps/api`: Web API query interface
-- `apps/web`: web app entry placeholder
+- `apps/web`: Grid to Chinese County web app
 
 

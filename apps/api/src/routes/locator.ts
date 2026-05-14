@@ -1,4 +1,4 @@
-import type { QueryResult } from '@grid-to-xian/shared-types';
+import type { QueryResult } from '@grid-to-chinese-county/shared-types';
 import { RequestValidationError } from '../mappers/errors.js';
 
 export interface LocatorQueryService {

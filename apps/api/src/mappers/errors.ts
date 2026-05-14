@@ -1,4 +1,4 @@
-import { LocatorParseError } from '@grid-to-xian/core';
+import { LocatorParseError } from '@grid-to-chinese-county/core';
 
 export interface ApiErrorPayload {
   error: {

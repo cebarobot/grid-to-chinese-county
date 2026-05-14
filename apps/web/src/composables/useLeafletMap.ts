@@ -1,6 +1,6 @@
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import type { ParsedLocator } from '@grid-to-xian/core/browser';
+import type { ParsedLocator } from '@grid-to-chinese-county/core/browser';
 import { onBeforeUnmount, type Ref } from 'vue';
 import type { MatchedCountyFeature } from '../services/countyData';
 import { createTileLayers } from '../services/tileProvider';
